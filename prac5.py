@@ -2,17 +2,30 @@
 
 class Zoo:
     def __init__(self):
+        self.animal_dict = {}
         pass
 
     def add_animal(self, animal):
-        pass
+        if animal.name in self.animal_dict:
+            print( f'"{animal.name} and {animal.species}"은 이미 동물원에 있습니다. 다른 이름을 사용하거나, 다른 종으로 추가해주세요.')
+        self.animal_dict[animal.name] = animal.species
+        # self.animal_list.append(animal)
+        
 
     def show_animals(self):
-        pass
+        print("현재 동물원에는 다음 동물들이 있습니다 :")
+        for name,species in self.animal_dict.items():
+            print(f"{name} and {species}" )
+    
+    def show_animals_by_species(self, species_input):
+        for name,species in self.animal_dict.items():
+            if species == species_input:
+                print(f"- {name} and {species}")
 
 class Animal:
     def __init__(self, name, species):
-        pass
+        self.name = name
+        self.species = species
 
 def main():
     # 동물원을 선언하고 10마리의 동물들을 추가합니다.
